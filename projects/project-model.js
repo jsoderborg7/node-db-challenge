@@ -5,9 +5,7 @@ module.exports = {
   add,
   findProjectById,
   update,
-  remove,
-  findProjectTasks,
-  findProjectResources
+  remove
 }
 
 function findProject() {
