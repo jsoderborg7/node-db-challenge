@@ -39,4 +39,32 @@ router.get('/:id', (req, res) =>{
   })
 })
 
+router.put('/:id', (req, res) =>{
+  Projects.update(req.body, req.params.id)
+  .then(project =>{
+    if (project) {
+      res.json(project)
+    } else {
+      res.status(404).json({message: "Project with specified ID does not exist"})
+    }
+  })
+  .catch(err =>{
+    res.status(500).json({message: "Could not get projects"})
+  })
+})
+
+router.delete('/:id', (req, res) =>{
+  Projects.remove(req.params.id)
+  .then(project =>{
+    if (project) {
+      res.json({message: "Project removed"})
+    } else {
+      res.status(404).json({message: "Project with specified ID does not exist"})
+    }
+  })
+  .catch(err =>{
+    res.status(500).json({message: "Project could not be removed"})
+  })
+})
+
 module.exports = router;

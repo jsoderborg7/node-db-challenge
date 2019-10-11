@@ -35,15 +35,3 @@ function remove(id) {
   .where({id})
   .del()
 }
-
-function findProjectTasks(id) {
-  return db('tasks')
-  .join('projects', 'project.id', 'tasks.project_id')
-  .where({project_id: id})
-}
-
-function findProjectResources(id) {
-  return db('resources')
-  .join('projects', 'projects.id', 'resources.project_id')
-  .where({project_id: id})
-}
